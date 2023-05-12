@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import { birthdayReminder} from "./components/data/data"
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import List from "./components/List";
 function App() {
+  const [people,setPeople]=useState(birthdayReminder)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container">
+          <div className="col-4 mx-auto mt-4 d-flex justify-content-center align-items-center">
+          <div className=" card card-body my-3 ">
+            <h5 className="text-capitalize text-secondary my-3">{people.length} birthday today</h5>
+            <List people={people} />
+            <button onClick={()=>setPeople([]) } className="btn btn-danger">clear all</button>
+          </div>
+        </div>
+        </div>
+    </>
   );
 }
 
